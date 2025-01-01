@@ -17,3 +17,9 @@ func MinTotalRank(min byte) Func {
 		return res.EvalResult.Total() >= min || res.EvalResult.HasUnknown()
 	}
 }
+
+func HasNoUnknownRank() Func {
+	return func(res Target) bool {
+		return !res.EvalResult.HasUnknown()
+	}
+}
