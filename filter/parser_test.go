@@ -45,6 +45,10 @@ func TestParse(t *testing.T) {
 			input:    `{"minTotalRank":1}`,
 			expected: MinTotalRank(1),
 		},
+		"HasNoUnknown": {
+			input:    `{"hasNoUnknown":{}}`,
+			expected: HasNoUnknownRank(),
+		},
 		"MoraEqual": {
 			input:    `{"mora":{"equal":3}}`,
 			expected: Mora(ByteEqual(3)),

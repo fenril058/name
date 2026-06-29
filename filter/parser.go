@@ -13,6 +13,7 @@ type Data struct {
 	Not          *Data           `json:"not,omitempty"`
 	MinRank      *eval.Rank      `json:"minRank,omitempty"`
 	MinTotalRank *byte           `json:"minTotalRank,omitempty"`
+	HasNoUnknown *Unit           `json:"hasNoUnknown,omitempty"`
 	Mora         *ByteFuncData   `json:"mora,omitempty"`
 	Strokes      *ByteFuncData   `json:"strokes,omitempty"`
 	True         *Unit           `json:"true,omitempty"`
@@ -116,6 +117,10 @@ func Build(seed *Data) (Func, error) {
 
 	if seed.MinRank != nil {
 		return MinRank(*seed.MinRank), nil
+	}
+
+	if seed.HasNoUnknown != nil {
+		return HasNoUnknownRank(), nil
 	}
 
 	if seed.Mora != nil {
